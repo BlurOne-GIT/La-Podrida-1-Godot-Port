@@ -245,6 +245,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_67pdj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_dvbw6")
 placeholder_text = "Enter name..."
 alignment = 1
+max_length = 32
 virtual_keyboard_enabled = false
 script = ExtResource("3_tq0j0")
 
@@ -287,6 +288,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_67pdj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_67pdj")
 placeholder_text = "Enter ID..."
 alignment = 1
+max_length = 6
 virtual_keyboard_enabled = false
 script = ExtResource("3_tq0j0")
 
