@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bbiywl1i7vh3a"]
+[gd_scene load_steps=53 format=3 uid="uid://bbiywl1i7vh3a"]
 
 [ext_resource type="Texture2D" uid="uid://ocgr35ji00r8" path="res://texture-poker-260nw-185144657.jpg" id="1_jvsuk"]
 [ext_resource type="Texture2D" uid="uid://4i42bb2p6egk" path="res://La-Podrida placeholder logo.png" id="2_0gem2"]
@@ -13,10 +13,13 @@
 [ext_resource type="Script" path="res://Fullscreen CheckBox.gd" id="9_uiyff"]
 [ext_resource type="Script" path="res://Back Button.gd" id="10_ulchg"]
 [ext_resource type="AudioStream" uid="uid://cpn3yl5uabl3v" path="res://Boton.mp3" id="12_5tj6s"]
+[ext_resource type="Script" path="res://Lobby Panel.gd" id="12_seef4"]
 [ext_resource type="AudioStream" uid="uid://kxm1x7dqr6m4" path="res://La-Podrida_Assets_Sounds_SFX_Barra.mp3" id="13_7bxpk"]
 [ext_resource type="AudioStream" uid="uid://cv3ucx4kmiiom" path="res://Bro what the hell bro - meme.mp3" id="14_ek4n2"]
 [ext_resource type="AudioStream" uid="uid://dr4pfdonc0xt4" path="res://Tecla.mp3" id="14_nyoll"]
 [ext_resource type="AudioStream" uid="uid://dxt7607ikqmwb" path="res://KeyBoard Smash Sound Effect.mp3" id="15_j1pkw"]
+[ext_resource type="AudioStream" uid="uid://kkvik0n2e83h" path="res://error.wav" id="17_lt2pp"]
+[ext_resource type="Script" path="res://NosjHTTPRequest.gd" id="18_cnjfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h05w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -72,7 +75,7 @@ variation_transform = Transform2D(1, 0.3, 0, 1, 0, 0)
 
 [sub_resource type="SystemFont" id="SystemFont_eqcsw"]
 font_names = PackedStringArray("Liberation Sans")
-font_weight = 999
+font_weight = 600
 font_stretch = 200
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85og0"]
@@ -197,6 +200,87 @@ bg_color = Color(0.956863, 0.956863, 0.956863, 1)
 font_names = PackedStringArray("Liberation Sans")
 font_stretch = 200
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qri3q"]
+bg_color = Color(0.14902, 0.803922, 0, 0.247059)
+
+[sub_resource type="SystemFont" id="SystemFont_t88jx"]
+font_names = PackedStringArray("Liberation Sans")
+font_weight = 600
+font_stretch = 200
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcnqp"]
+font = SubResource("SystemFont_t88jx")
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu0ve"]
+bg_color = Color(0.286275, 0.647059, 0.0705882, 1)
+border_color = Color(0.172549, 0.388235, 0.0431373, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaijf"]
+bg_color = Color(0.247059, 0.556863, 0.0588235, 1)
+border_color = Color(0.172549, 0.388235, 0.0431373, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p238r"]
+bg_color = Color(0.247059, 0.556863, 0.0588235, 1)
+border_color = Color(0.172549, 0.388235, 0.0431373, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dfjr"]
+bg_color = Color(0.843137, 0.227451, 0.168627, 1)
+border_color = Color(0.505882, 0.137255, 0.101961, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nc0dy"]
+bg_color = Color(0.72549, 0.196078, 0.145098, 1)
+border_color = Color(0.505882, 0.137255, 0.101961, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkv1q"]
+bg_color = Color(0.67451, 0.180392, 0.133333, 1)
+border_color = Color(0.505882, 0.137255, 0.101961, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.247059)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3j1f"]
+bg_color = Color(0, 0, 0.117647, 0.313726)
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -261,6 +345,7 @@ text = "Name:"
 label_settings = SubResource("LabelSettings_famqb")
 
 [node name="Name Input" type="LineEdit" parent="BG/Main Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,6 +389,7 @@ text = "RoomID:"
 label_settings = SubResource("LabelSettings_famqb")
 
 [node name="RoomID Input" type="LineEdit" parent="BG/Main Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -611,6 +697,7 @@ popup/item_2/text = "Option C"
 popup/item_2/id = 2
 
 [node name="Back Button" type="Button" parent="BG/Settings Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -634,6 +721,147 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wmm6q")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nh6yc")
 text = "Back"
 script = ExtResource("10_ulchg")
+
+[node name="Lobby Panel" type="Panel" parent="BG"]
+unique_name_in_owner = true
+process_mode = 4
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qri3q")
+script = ExtResource("12_seef4")
+
+[node name="Settings Button2" type="TextureButton" parent="BG/Lobby Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 120.0
+grow_horizontal = 0
+pivot_offset = Vector2(80, 0)
+texture_normal = ExtResource("4_1drnm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RoomId Label" type="Label" parent="BG/Lobby Panel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 270.0
+offset_bottom = 87.0
+text = "Room ID:"
+label_settings = SubResource("LabelSettings_fcnqp")
+
+[node name="Id Label" type="Label" parent="BG/Lobby Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 56.0
+offset_top = 87.0
+offset_right = 269.0
+offset_bottom = 142.0
+text = "XXXXXX"
+label_settings = SubResource("LabelSettings_fcnqp")
+horizontal_alignment = 1
+
+[node name="PlayerCount Label" type="Label" parent="BG/Lobby Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 33.0
+offset_top = 197.0
+offset_right = 293.0
+offset_bottom = 252.0
+text = "Players:X/8"
+label_settings = SubResource("LabelSettings_fcnqp")
+horizontal_alignment = 1
+
+[node name="Start Button" type="Button" parent="BG/Lobby Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -278.0
+offset_right = 263.0
+offset_bottom = -206.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_eqcsw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_mu0ve")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jaijf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p238r")
+text = "Start"
+
+[node name="Leave Button" type="Button" parent="BG/Lobby Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = -168.0
+offset_right = 263.0
+offset_bottom = -96.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_eqcsw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_4dfjr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nc0dy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rkv1q")
+text = "Leave
+"
+
+[node name="Player ItemList" type="ItemList" parent="BG/Lobby Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 91.0
+offset_right = -220.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/guide_color = Color(0, 0, 0, 0)
+theme_override_constants/v_separation = 12
+theme_override_constants/icon_margin = 0
+theme_override_constants/line_separation = 0
+theme_override_fonts/font = SubResource("SystemFont_k5k8x")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/panel = SubResource("StyleBoxFlat_y3j1f")
+allow_search = false
+item_count = 8
+item_0/text = "Player 1"
+item_0/selectable = false
+item_1/text = "Player 2"
+item_1/selectable = false
+item_2/text = "Player 3"
+item_2/selectable = false
+item_3/text = "Player 4"
+item_3/selectable = false
+item_4/text = "Player 5"
+item_4/selectable = false
+item_5/text = "Player 6"
+item_5/selectable = false
+item_6/text = "Player 7"
+item_6/selectable = false
+item_7/text = "Player 8"
+item_7/selectable = false
 
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_71wgi")
@@ -660,13 +888,26 @@ unique_name_in_owner = true
 stream = ExtResource("15_j1pkw")
 bus = &"sfx"
 
+[node name="ErrorSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_lt2pp")
+bus = &"sfx"
+
 [node name="TeclaSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("14_nyoll")
 bus = &"sfx"
 
+[node name="NosjHTTPRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+download_file = "user://nosj.json"
+use_threads = true
+script = ExtResource("18_cnjfo")
+
 [connection signal="text_changed" from="BG/Main Panel/Name Input" to="BG/Main Panel/Name Input" method="_on_text_changed"]
 [connection signal="text_changed" from="BG/Main Panel/RoomID Input" to="BG/Main Panel/RoomID Input" method="_on_text_changed"]
+[connection signal="pressed" from="BG/Main Panel/Join Button" to="BG/Main Panel" method="_on_join_button_pressed"]
+[connection signal="pressed" from="BG/Main Panel/Create Room Button" to="BG/Main Panel" method="_on_create_room_button_pressed"]
 [connection signal="pressed" from="BG/Main Panel/Exit Button" to="BG/Main Panel" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="BG/Main Panel/Settings Button" to="BG/Main Panel" method="_on_config_button_pressed"]
 [connection signal="value_changed" from="BG/Settings Panel/Bgm HSlider" to="BG/Settings Panel/Bgm HSlider" method="_on_value_changed"]
@@ -674,3 +915,7 @@ bus = &"sfx"
 [connection signal="value_changed" from="BG/Settings Panel/Sfx HSlider" to="BG/Settings Panel/Sfx HSlider" method="_on_value_changed"]
 [connection signal="toggled" from="BG/Settings Panel/Fullscreen CheckBox" to="BG/Settings Panel/Fullscreen CheckBox" method="_on_toggled"]
 [connection signal="pressed" from="BG/Settings Panel/Back Button" to="BG/Settings Panel/Back Button" method="_on_pressed"]
+[connection signal="pressed" from="BG/Lobby Panel/Settings Button2" to="BG/Main Panel" method="_on_config_button_pressed"]
+[connection signal="pressed" from="BG/Lobby Panel/Start Button" to="BG/Lobby Panel" method="_on_start_button_pressed"]
+[connection signal="pressed" from="BG/Lobby Panel/Leave Button" to="BG/Lobby Panel" method="_on_leave_button_pressed"]
+[connection signal="request_completed" from="NosjHTTPRequest" to="NosjHTTPRequest" method="_on_request_completed"]
