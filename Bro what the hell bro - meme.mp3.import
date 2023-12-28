@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cv3ucx4kmiiom"
+path="res://.godot/imported/Bro what the hell bro - meme.mp3-0f9a9323e54045ed55e02aa979bdee05.mp3str"
+
+[deps]
+
+source_file="res://Bro what the hell bro - meme.mp3"
+dest_files=["res://.godot/imported/Bro what the hell bro - meme.mp3-0f9a9323e54045ed55e02aa979bdee05.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,11 +1,22 @@
-[gd_scene load_steps=23 format=3 uid="uid://bbiywl1i7vh3a"]
+[gd_scene load_steps=40 format=3 uid="uid://bbiywl1i7vh3a"]
 
 [ext_resource type="Texture2D" uid="uid://ocgr35ji00r8" path="res://texture-poker-260nw-185144657.jpg" id="1_jvsuk"]
 [ext_resource type="Texture2D" uid="uid://4i42bb2p6egk" path="res://La-Podrida placeholder logo.png" id="2_0gem2"]
 [ext_resource type="Script" path="res://Main Panel.gd" id="2_23f3s"]
+[ext_resource type="Script" path="res://ConfigLoader.gd" id="2_63r2s"]
 [ext_resource type="Texture2D" uid="uid://c32ju2yfnd3e1" path="res://png-clipart-button-logo-exit-game-button-blue-game.png" id="3_f20ox"]
 [ext_resource type="Script" path="res://InputFontChanger.gd" id="3_tq0j0"]
 [ext_resource type="Texture2D" uid="uid://lj41bfy00grg" path="res://descarga (3).jpg" id="4_1drnm"]
+[ext_resource type="AudioStream" uid="uid://by1g668t6lsii" path="res://Code Combat (Game OST) - In Game Song.mp3" id="7_71wgi"]
+[ext_resource type="Script" path="res://Bgm HSlider.gd" id="7_geyfe"]
+[ext_resource type="Script" path="res://Sfx HSlider.gd" id="8_pkwvy"]
+[ext_resource type="Script" path="res://Fullscreen CheckBox.gd" id="9_uiyff"]
+[ext_resource type="Script" path="res://Back Button.gd" id="10_ulchg"]
+[ext_resource type="AudioStream" uid="uid://cpn3yl5uabl3v" path="res://Boton.mp3" id="12_5tj6s"]
+[ext_resource type="AudioStream" uid="uid://kxm1x7dqr6m4" path="res://La-Podrida_Assets_Sounds_SFX_Barra.mp3" id="13_7bxpk"]
+[ext_resource type="AudioStream" uid="uid://cv3ucx4kmiiom" path="res://Bro what the hell bro - meme.mp3" id="14_ek4n2"]
+[ext_resource type="AudioStream" uid="uid://dr4pfdonc0xt4" path="res://Tecla.mp3" id="14_nyoll"]
+[ext_resource type="AudioStream" uid="uid://dxt7607ikqmwb" path="res://KeyBoard Smash Sound Effect.mp3" id="15_j1pkw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h05w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -162,6 +173,30 @@ shadow_size = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhk3b"]
 bg_color = Color(0, 0, 0, 0.701961)
 
+[sub_resource type="SystemFont" id="SystemFont_r0e71"]
+font_names = PackedStringArray("Liberation Sans")
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_ac77a"]
+font = SubResource("SystemFont_r0e71")
+font_size = 32
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_e1x12"]
+color = Color(0.8, 0.8, 0.8, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h42km"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iw4nd"]
+bg_color = Color(0.956863, 0.956863, 0.956863, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_l1ghj"]
+font_names = PackedStringArray("Liberation Sans")
+font_stretch = 200
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -171,6 +206,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BG" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,8 +214,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_jvsuk")
+script = ExtResource("2_63r2s")
 
-[node name="Main Panel" type="Panel" parent="."]
+[node name="Main Panel" type="Panel" parent="BG"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -190,7 +227,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6h05w")
 script = ExtResource("2_23f3s")
 
-[node name="Logo" type="TextureRect" parent="Main Panel"]
+[node name="Logo" type="TextureRect" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -205,7 +242,7 @@ pivot_offset = Vector2(47.295, 0)
 texture = ExtResource("2_0gem2")
 expand_mode = 3
 
-[node name="Name Label" type="Label" parent="Main Panel"]
+[node name="Name Label" type="Label" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,7 +260,7 @@ theme_override_fonts/font = SubResource("SystemFont_tcqwp")
 text = "Name:"
 label_settings = SubResource("LabelSettings_famqb")
 
-[node name="Name Input" type="LineEdit" parent="Main Panel"]
+[node name="Name Input" type="LineEdit" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -249,7 +286,7 @@ max_length = 32
 virtual_keyboard_enabled = false
 script = ExtResource("3_tq0j0")
 
-[node name="RoomID Label" type="Label" parent="Main Panel"]
+[node name="RoomID Label" type="Label" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -266,7 +303,7 @@ pivot_offset = Vector2(32, 11.5)
 text = "RoomID:"
 label_settings = SubResource("LabelSettings_famqb")
 
-[node name="RoomID Input" type="LineEdit" parent="Main Panel"]
+[node name="RoomID Input" type="LineEdit" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -292,7 +329,7 @@ max_length = 6
 virtual_keyboard_enabled = false
 script = ExtResource("3_tq0j0")
 
-[node name="Join Button" type="Button" parent="Main Panel"]
+[node name="Join Button" type="Button" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -316,7 +353,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wmm6q")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nh6yc")
 text = "JOIN"
 
-[node name="or Label" type="Label" parent="Main Panel"]
+[node name="or Label" type="Label" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -334,7 +371,7 @@ text = "or"
 label_settings = SubResource("LabelSettings_famqb")
 horizontal_alignment = 1
 
-[node name="Create Room Button" type="Button" parent="Main Panel"]
+[node name="Create Room Button" type="Button" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -358,7 +395,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nbpnl")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_61vau")
 text = "CREATE ROOM"
 
-[node name="Exit Button" type="TextureButton" parent="Main Panel"]
+[node name="Exit Button" type="TextureButton" parent="BG/Main Panel"]
 layout_mode = 1
 offset_left = 40.0
 offset_top = 40.0
@@ -368,7 +405,7 @@ texture_normal = ExtResource("3_f20ox")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Config Button" type="TextureButton" parent="Main Panel"]
+[node name="Settings Button" type="TextureButton" parent="BG/Main Panel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -383,7 +420,7 @@ texture_normal = ExtResource("4_1drnm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Config Panel" type="Panel" parent="."]
+[node name="Settings Panel" type="Panel" parent="BG"]
 unique_name_in_owner = true
 process_mode = 4
 visible = false
@@ -395,7 +432,245 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fhk3b")
 
-[connection signal="text_changed" from="Main Panel/Name Input" to="Main Panel/Name Input" method="_on_text_changed"]
-[connection signal="text_changed" from="Main Panel/RoomID Input" to="Main Panel/RoomID Input" method="_on_text_changed"]
-[connection signal="pressed" from="Main Panel/Exit Button" to="Main Panel" method="_on_exit_button_pressed"]
-[connection signal="pressed" from="Main Panel/Config Button" to="Main Panel" method="_on_config_button_pressed"]
+[node name="Settings Label" type="Label" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.5
+offset_top = 120.0
+offset_right = 69.5
+offset_bottom = 156.0
+grow_horizontal = 2
+text = "Settings:"
+label_settings = SubResource("LabelSettings_ac77a")
+
+[node name="Bgm Label" type="Label" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -93.0
+offset_right = 48.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 23)
+theme_override_fonts/font = SubResource("SystemFont_tcqwp")
+text = "BGM:"
+label_settings = SubResource("LabelSettings_famqb")
+horizontal_alignment = 1
+
+[node name="Bgm HSlider" type="HSlider" parent="BG/Settings Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -48.0
+offset_right = 144.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_e1x12")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_h42km")
+max_value = 1.0
+step = 0.1
+value = 0.8
+script = ExtResource("7_geyfe")
+
+[node name="Sfx Label" type="Label" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -18.0
+offset_right = 63.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 11.5)
+text = "SFX:"
+label_settings = SubResource("LabelSettings_famqb")
+horizontal_alignment = 1
+
+[node name="Sfx HSlider" type="HSlider" parent="BG/Settings Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 27.0
+offset_right = 144.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_e1x12")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_h42km")
+max_value = 1.0
+step = 0.1
+value = 0.8
+script = ExtResource("8_pkwvy")
+
+[node name="Fullscreen Label" type="Label" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = 46.0
+offset_right = -17.9999
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 11.5)
+text = "Fullscreen:"
+label_settings = SubResource("LabelSettings_famqb")
+horizontal_alignment = 1
+
+[node name="Fullscreen CheckBox" type="CheckBox" parent="BG/Settings Panel"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = 42.0
+offset_right = 90.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+script = ExtResource("9_uiyff")
+
+[node name="Languaje Label" type="Label" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = 86.0
+offset_right = -17.9999
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 11.5)
+text = "Languaje:"
+label_settings = SubResource("LabelSettings_famqb")
+horizontal_alignment = 1
+
+[node name="Languaje OptionButton" type="OptionButton" parent="BG/Settings Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 91.0
+offset_right = 160.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_iw4nd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_iw4nd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iw4nd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iw4nd")
+item_count = 3
+popup/item_0/text = "Option A"
+popup/item_0/id = 0
+popup/item_1/text = "Option B"
+popup/item_1/id = 1
+popup/item_2/text = "Option C"
+popup/item_2/id = 2
+
+[node name="Back Button" type="Button" parent="BG/Settings Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 136.0
+offset_right = 52.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.231373, 0.231373, 0.231373, 1)
+theme_override_colors/font_focus_color = Color(0.231373, 0.231373, 0.231373, 1)
+theme_override_fonts/font = SubResource("SystemFont_l1ghj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_85og0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wmm6q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nh6yc")
+text = "Back"
+script = ExtResource("10_ulchg")
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_71wgi")
+autoplay = true
+bus = &"bgm"
+
+[node name="BotonSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_5tj6s")
+bus = &"sfx"
+
+[node name="BarraSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_7bxpk")
+bus = &"sfx"
+
+[node name="BwthbSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_ek4n2")
+bus = &"sfx"
+
+[node name="KsmashSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_j1pkw")
+bus = &"sfx"
+
+[node name="TeclaSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_nyoll")
+bus = &"sfx"
+
+[connection signal="text_changed" from="BG/Main Panel/Name Input" to="BG/Main Panel/Name Input" method="_on_text_changed"]
+[connection signal="text_changed" from="BG/Main Panel/RoomID Input" to="BG/Main Panel/RoomID Input" method="_on_text_changed"]
+[connection signal="pressed" from="BG/Main Panel/Exit Button" to="BG/Main Panel" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="BG/Main Panel/Settings Button" to="BG/Main Panel" method="_on_config_button_pressed"]
+[connection signal="value_changed" from="BG/Settings Panel/Bgm HSlider" to="BG/Settings Panel/Bgm HSlider" method="_on_value_changed"]
+[connection signal="drag_started" from="BG/Settings Panel/Sfx HSlider" to="BG/Settings Panel/Sfx HSlider" method="_on_drag_started"]
+[connection signal="value_changed" from="BG/Settings Panel/Sfx HSlider" to="BG/Settings Panel/Sfx HSlider" method="_on_value_changed"]
+[connection signal="toggled" from="BG/Settings Panel/Fullscreen CheckBox" to="BG/Settings Panel/Fullscreen CheckBox" method="_on_toggled"]
+[connection signal="pressed" from="BG/Settings Panel/Back Button" to="BG/Settings Panel/Back Button" method="_on_pressed"]
