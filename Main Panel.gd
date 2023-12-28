@@ -35,7 +35,7 @@ func _on_config_button_pressed():
 func _on_join_button_pressed():
 	var inputed_id: String = room_id_input.text.to_upper()
 	var filtered_array: Array = nosj.rarrey.filter(func(entry: Dictionary): return entry["room"] == inputed_id)
-	if filtered_array.size() <= 0:
+	if inputed_id == "" or filtered_array.size() <= 0:
 		error_sfx.play()
 		return
 	
