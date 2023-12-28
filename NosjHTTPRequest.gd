@@ -1,6 +1,6 @@
 extends HTTPRequest
 
-const NOSJ_URL := "https://raw.githubusercontent.com/BlurOne-GIT/La-Podrida-2/main/LaPodrida2/Logical%20Code/nosj.json"
+const NOSJ_URL := "https://pastebin.com/raw/nxxfEnkP"
 @export var rarrey: Array
 
 
@@ -17,6 +17,7 @@ func _on_request_completed(result, _response_code, _headers, _body):
 	file.close()
 	var mr_json = JSON.new()
 	if mr_json.parse(text) != OK:
+		OS.alert("Avisenle al tarado de Blur que hay un error en el \"nosj\"...")
 		return
 	
 	rarrey = mr_json.data as Array
