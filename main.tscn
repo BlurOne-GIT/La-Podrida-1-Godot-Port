@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bbiywl1i7vh3a"]
+[gd_scene load_steps=55 format=3 uid="uid://bbiywl1i7vh3a"]
 
 [ext_resource type="Texture2D" uid="uid://ocgr35ji00r8" path="res://texture-poker-260nw-185144657.jpg" id="1_jvsuk"]
 [ext_resource type="Texture2D" uid="uid://4i42bb2p6egk" path="res://La-Podrida placeholder logo.png" id="2_0gem2"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dxt7607ikqmwb" path="res://KeyBoard Smash Sound Effect.mp3" id="15_j1pkw"]
 [ext_resource type="AudioStream" uid="uid://kkvik0n2e83h" path="res://error.wav" id="17_lt2pp"]
 [ext_resource type="Script" path="res://NosjHTTPRequest.gd" id="18_cnjfo"]
+[ext_resource type="AudioStream" uid="uid://cnht8kdfhdf28" path="res://OH MY GOD Sound Effect.mp3" id="19_p6pso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h05w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -280,6 +281,9 @@ shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3j1f"]
 bg_color = Color(0, 0, 0.117647, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvlgj"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -893,6 +897,11 @@ unique_name_in_owner = true
 stream = ExtResource("17_lt2pp")
 bus = &"sfx"
 
+[node name="OhhmgSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("19_p6pso")
+bus = &"sfx"
+
 [node name="TeclaSfx" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("14_nyoll")
@@ -903,6 +912,17 @@ unique_name_in_owner = true
 download_file = "user://nosj.json"
 use_threads = true
 script = ExtResource("18_cnjfo")
+
+[node name="Devil Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fvlgj")
 
 [connection signal="text_changed" from="BG/Main Panel/Name Input" to="BG/Main Panel/Name Input" method="_on_text_changed"]
 [connection signal="text_changed" from="BG/Main Panel/RoomID Input" to="BG/Main Panel/RoomID Input" method="_on_text_changed"]

@@ -5,6 +5,7 @@ extends Panel
 @onready var back_button = %"Back Button"
 @onready var boton_sfx = %BotonSfx
 @onready var error_sfx = %ErrorSfx
+@onready var ohhmg_sfx = %OhhmgSfx
 @onready var name_input = %"Name Input"
 @onready var room_id_input = %"RoomID Input"
 @onready var nosj = %NosjHTTPRequest
@@ -48,6 +49,7 @@ func _on_join_button_pressed():
 	for i in range (0, players.size()):
 		player_item_list.set_item_text(1+i, players[i])
 	
+	ohhmg_sfx.play()
 	join(inputed_id)
 
 
@@ -55,7 +57,6 @@ func join(room_id: String):
 	if name_input.text == "":
 		error_sfx.play()
 		return
-	boton_sfx.play()
 	id_label.text = room_id
 	player_item_list.set_item_text(0, name_input.text)
 	back_button.in_lobby = true
@@ -65,7 +66,10 @@ func join(room_id: String):
 	lobby_panel.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_create_room_button_pressed():
+	boton_sfx.play()
 	player_count_label.text = "Players:1/8"
+	for i in range(1, 8):
+		player_item_list.set_item_text(i, str("Player ", i))
 	join(generate_random_room())
 
 
