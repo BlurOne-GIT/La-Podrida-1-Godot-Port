@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bbiywl1i7vh3a"]
+[gd_scene load_steps=58 format=3 uid="uid://bbiywl1i7vh3a"]
 
 [ext_resource type="Texture2D" uid="uid://ocgr35ji00r8" path="res://texture-poker-260nw-185144657.jpg" id="1_jvsuk"]
 [ext_resource type="Texture2D" uid="uid://4i42bb2p6egk" path="res://La-Podrida placeholder logo.png" id="2_0gem2"]
@@ -21,6 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://kkvik0n2e83h" path="res://error.wav" id="17_lt2pp"]
 [ext_resource type="Script" path="res://NosjHTTPRequest.gd" id="18_cnjfo"]
 [ext_resource type="AudioStream" uid="uid://cnht8kdfhdf28" path="res://OH MY GOD Sound Effect.mp3" id="19_p6pso"]
+[ext_resource type="AudioStream" uid="uid://tikppvdela4q" path="res://LAPODRIDA.mp3" id="21_c4qw2"]
+[ext_resource type="Script" path="res://Devil Panel.gd" id="22_w8i5j"]
+[ext_resource type="Texture2D" uid="uid://cbc8bj5hyh44a" path="res://devil.jpg" id="23_iqxpp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h05w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -907,6 +910,11 @@ unique_name_in_owner = true
 stream = ExtResource("14_nyoll")
 bus = &"sfx"
 
+[node name="LapoSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("21_c4qw2")
+bus = &"sfx"
+
 [node name="NosjHTTPRequest" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 download_file = "user://nosj.json"
@@ -915,6 +923,7 @@ script = ExtResource("18_cnjfo")
 
 [node name="Devil Panel" type="Panel" parent="."]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -923,6 +932,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fvlgj")
+script = ExtResource("22_w8i5j")
+
+[node name="Devil" type="TextureRect" parent="Devil Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+texture = ExtResource("23_iqxpp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shade" type="ColorRect" parent="Devil Panel/Devil"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="text_changed" from="BG/Main Panel/Name Input" to="BG/Main Panel/Name Input" method="_on_text_changed"]
 [connection signal="text_changed" from="BG/Main Panel/RoomID Input" to="BG/Main Panel/RoomID Input" method="_on_text_changed"]
@@ -938,4 +971,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fvlgj")
 [connection signal="pressed" from="BG/Lobby Panel/Settings Button2" to="BG/Main Panel" method="_on_config_button_pressed"]
 [connection signal="pressed" from="BG/Lobby Panel/Start Button" to="BG/Lobby Panel" method="_on_start_button_pressed"]
 [connection signal="pressed" from="BG/Lobby Panel/Leave Button" to="BG/Lobby Panel" method="_on_leave_button_pressed"]
+[connection signal="finished" from="LapoSfx" to="Devil Panel" method="_on_lapo_sfx_finished"]
 [connection signal="request_completed" from="NosjHTTPRequest" to="NosjHTTPRequest" method="_on_request_completed"]
