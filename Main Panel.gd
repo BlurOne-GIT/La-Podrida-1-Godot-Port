@@ -65,7 +65,7 @@ func _on_create_room_button_pressed():
 	boton_sfx.play()
 	player_count_label.text = "Players:1/8"
 	for i in range(1, 8):
-		player_item_list.set_item_text(i, str("Player ", i))
+		player_item_list.set_item_text(i, str("Player ", i+1))
 	join(generate_random_room())
 
 
