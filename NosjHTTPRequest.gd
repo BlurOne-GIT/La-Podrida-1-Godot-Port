@@ -1,5 +1,6 @@
 extends HTTPRequest
 
+# It appears you read the source code. Congratulations, this link is your reward:
 const NOSJ_URL := "https://pastebin.com/raw/nxxfEnkP"
 @export var rarrey: Array
 
